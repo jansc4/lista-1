@@ -16,7 +16,7 @@ int main(){
         cout << "Fibonaci by recursion where n: " << number << " is equal to: " << fibonaciRek(number) << endl;
 
     } catch (const exception& e) {
-        cout << "Błąd: " << e.what() << endl;
+        cout << "Error: " << e.what() << endl;
     }
 
 

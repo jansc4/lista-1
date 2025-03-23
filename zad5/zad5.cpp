@@ -12,7 +12,7 @@ vector<int> collatz(int c) {
     }
 
     vector<int> elements;
-    elements.push_back(c);  // Dodajemy pierwszy element
+    elements.push_back(c);
 
     while (c != 1) {  // Warunek zakończenia: liczba osiągnie 1
         if (c % 2 == 0) {

@@ -1,5 +1,9 @@
 /*
  * @author Jan Nowak
+ * https://github.com/catchorg/Catch2
+ * https://www.jetbrains.com/help/clion/unit-testing-tutorial.html#clion-integrations
+ * https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md#installing-catch2-from-git-repository
+ * chatGPT - pomoc w nauce
  */
 
 #define CATCH_CONFIG_MAIN
