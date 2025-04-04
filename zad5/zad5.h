@@ -2,8 +2,8 @@
  * @author Jan Nowak
  * https://pl.wikipedia.org/wiki/Problem_Collatza
  */
-#include "vector"
-#include "stdexcept"
+#include <vector>
+#include <stdexcept>
 
 using namespace std;
 
@@ -11,10 +11,13 @@ using namespace std;
 #define LISTA_1_ZAD5_H
 
 /*
- * Collatz sequence
- * @param number (Int) - starting number
- * return (vector<int>) - vector of resulting numbers
+ * Generates the Collatz sequence starting from a given number.
+ *
+ * @param c (int) - The starting number for the Collatz sequence (positive integer).
+ * @return (std::vector<int>) - A vector containing the numbers in the Collatz sequence,
+ *                             starting with the input number and ending with 1.
+ * @throws std::invalid_argument - If c is negative or zero.
  */
-vector<int> collatz(int c);
+std::vector<int> collatz(int c);
 
 #endif //LISTA_1_ZAD5_H

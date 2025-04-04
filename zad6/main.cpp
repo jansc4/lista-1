@@ -6,33 +6,31 @@
  */
 
 #include "zad6.h"
-#include "iostream"
+#include <iostream>
 
-int main(){
+int main() {
+    vector<char> DNA53 = {'A', 'T', 'G', 'C', 'T', 'T'};
 
-    vector<char> example = {'A', 'T', 'G', 'C', 'T', 'T'};
-    Protein protein(example);
-    try{
-        protein.komplement();
-        protein.transkrybuj();
-        protein.transluj();
-    } catch (const exception& e) {
+    try {
+        vector<char> DNA35 = komplement(DNA53);
+        vector<char> mRNA = transkrybuj(DNA35);
+        vector<char> protein = transluj(mRNA);
+
+        cout << " DNA 5'->3': ";
+        printVector(DNA53);
+
+        cout << "\n DNA 3'->5': ";
+        printVector(DNA35);
+
+        cout << "\n mRNA: ";
+        printVector(mRNA);
+
+        cout << "\n Protein sequence: ";
+        printVector(protein);
+
+    } catch (const exception &e) {
         cout << "Error: " << e.what() << endl;
     }
-
-
-
-    cout << " DNA 5'->3': ";
-    Protein::printVector(protein.getDna53());
-
-    cout << "\n DNA 3'->5': ";
-    Protein::printVector(protein.getDna35());
-
-    cout << "\n mRNA: ";
-    Protein::printVector(protein.getMrna());
-
-    cout << "\n Protein sequence: ";
-    Protein::printVector(protein.getProteinSequence());
 
     return 0;
 }

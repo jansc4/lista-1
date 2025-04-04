@@ -1,6 +1,13 @@
 /*
  * @author Jan Nowak
  *https://www.w3schools.com/cpp/cpp_syntax.asp
+ * https://www.w3schools.com/cpp/cpp_output.asp
+ * https://www.w3schools.com/cpp/cpp_comments.asp
+ * https://www.w3schools.com/cpp/cpp_variables.asp
+ * https://www.w3schools.com/cpp/cpp_user_input.asp
+ * https://www.w3schools.com/cpp/cpp_data_types.asp
+ * https://www.w3schools.com/cpp/cpp_operators.asp
+ * https://www.w3schools.com/cpp/cpp_strings.asp
  * https://pl.wikipedia.org/wiki/Wzór_Herona
  */
 

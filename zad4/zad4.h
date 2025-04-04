@@ -2,7 +2,7 @@
  * @author Jan Nowak
  * https://en.wikipedia.org/wiki/Fibonacci_sequence
  */
-#include "stdexcept"
+#include <stdexcept>
 
 using namespace std;
 
@@ -10,15 +10,20 @@ using namespace std;
 #define LISTA_1_ZAD4_H
 
 /*
- * Fibonacci sequence by iteration
- * @param number (Int) - number of iterations
- * return (Int)
+ * Calculates the nth Fibonacci number using an iterative approach.
+ *
+ * @param n (int) - The index of the Fibonacci number to calculate (non-negative).
+ * @return (int) - The nth Fibonacci number.
+ * @throws std::invalid_argument - If n is negative.
  */
 int fibonaciIter(int n);
+
 /*
- * Fibonacci sequence by recursion
- * @param number (Int) - number of recursions
- * return (Int)
+ * Calculates the nth Fibonacci number using a recursive approach.
+ *
+ * @param n (int) - The index of the Fibonacci number to calculate (non-negative).
+ * @return (int) - The nth Fibonacci number.
+ * @throws std::invalid_argument - If n is negative.
  */
 int fibonaciRek(int n);
 

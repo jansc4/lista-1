@@ -6,89 +6,45 @@
  */
 
 
-#include <iostream>
 #include "zad6.h"
+#include <iostream>
 
-using namespace std;
+vector<char> komplement(const vector<char> &DNA53) {
+    if (DNA53.empty()) throw invalid_argument("DNA53 is empty");
 
-
-Protein::Protein(vector<char> &DNA53) : DNA53(DNA53) {}
-
-
-const vector<char> &Protein::getDna53() const {
-    return DNA53;
-}
-
-void Protein::setDna53(const vector<char> &dna53) {
-    DNA53 = dna53;
-}
-
-const vector<char> &Protein::getDna35() const {
+    vector<char> DNA35;
+    for (char nuclo : DNA53) {
+        switch (nuclo) {
+            case 'A': DNA35.push_back('T'); break;
+            case 'T': DNA35.push_back('A'); break;
+            case 'C': DNA35.push_back('G'); break;
+            case 'G': DNA35.push_back('C'); break;
+            default: throw invalid_argument("Invalid nucleotide in DNA53");
+        }
+    }
     return DNA35;
 }
 
-void Protein::setDna35(const vector<char> &dna35) {
-    DNA35 = dna35;
-}
+vector<char> transkrybuj(const vector<char> &DNA35) {
+    if (DNA35.empty()) throw invalid_argument("DNA35 is empty");
 
-const vector<char> &Protein::getMrna() const {
+    vector<char> mRNA;
+    for (char nuclo : DNA35) {
+        switch (nuclo) {
+            case 'A': mRNA.push_back('U'); break;
+            case 'T': mRNA.push_back('A'); break;
+            case 'C': mRNA.push_back('G'); break;
+            case 'G': mRNA.push_back('C'); break;
+            default: throw invalid_argument("Invalid nucleotide in DNA35");
+        }
+    }
     return mRNA;
 }
 
-void Protein::setMrna(const vector<char> &mRna) {
-    mRNA = mRna;
-}
+vector<char> transluj(const vector<char> &mRNA) {
+    if (mRNA.empty() || mRNA.size() % 3 != 0)
+        throw invalid_argument("mRNA must not be empty and its length must be a multiple of 3");
 
-const vector<char> &Protein::getProteinSequence() const {
-    return proteinSequence;
-}
-
-void Protein::setProteinSequence(const vector<char> &proteinSequence) {
-    Protein::proteinSequence = proteinSequence;
-}
-
-void Protein::komplement() {
-    if (DNA53.empty()) {
-        throw invalid_argument("Vectors can not be empty");
-    }
-    DNA35.clear();
-    for (char nuclo : DNA53){
-        if (nuclo == 'A'){
-            DNA35.push_back('T');
-        } else if (nuclo == 'T'){
-            DNA35.push_back('A');
-        } else if (nuclo == 'C'){
-            DNA35.push_back('G');
-        } else if (nuclo == 'G'){
-            DNA35.push_back('C');
-        }
-    }
-}
-
-void Protein::transkrybuj() {
-    if (DNA35.empty()) {
-        throw invalid_argument("Vectors can not be empty");
-    }
-    mRNA.clear();
-    for (char nuclo : DNA35){
-        if (nuclo == 'A'){
-            mRNA.push_back('U');
-        } else if (nuclo == 'T'){
-            mRNA.push_back('A');
-        } else if (nuclo == 'C'){
-            mRNA.push_back('G');
-        } else if (nuclo == 'G'){
-            mRNA.push_back('C');
-        }
-    }
-}
-
-void Protein::transluj() {
-    if (mRNA.size() % 3 != 0 || mRNA.empty()) {
-        throw invalid_argument("mRNA sequence length must be a multiple of 3.");
-    }
-
-    // Mapa kodonów
     map<string, char> codonTable = {
             {"GCU", 'A'}, {"GCC", 'A'}, {"GCA", 'A'}, {"GCG", 'A'},
             {"UGU", 'C'}, {"UGC", 'C'},
@@ -100,7 +56,7 @@ void Protein::transluj() {
             {"AUU", 'I'}, {"AUC", 'I'}, {"AUA", 'I'},
             {"AAA", 'K'}, {"AAG", 'K'},
             {"UUA", 'L'}, {"UUG", 'L'}, {"CUU", 'L'}, {"CUC", 'L'}, {"CUA", 'L'}, {"CUG", 'L'},
-            {"AUG", 'M'},               // Metionina (start)
+            {"AUG", 'M'},
             {"AAU", 'N'}, {"AAC", 'N'},
             {"UAG", 'O'},
             {"CCU", 'P'}, {"CCC", 'P'}, {"CCA", 'P'}, {"CCG", 'P'},
@@ -112,27 +68,24 @@ void Protein::transluj() {
             {"GUU", 'V'}, {"GUC", 'V'}, {"GUA", 'V'}, {"GUG", 'V'},
             {"UGG", 'W'},
             {"UAU", 'Y'}, {"UAC", 'Y'},
-            {"UGA", '*'}, {"UAA", '*'}, {"UAG", '*'} // Kodony STOP
+            {"UGA", '*'}, {"UAA", '*'}, {"UAG", '*'}
     };
 
-    proteinSequence.clear();
-
+    vector<char> proteinSequence;
     for (size_t i = 0; i < mRNA.size(); i += 3) {
-        string codon = {mRNA[i], mRNA[i+1], mRNA[i+2]};
-
+        string codon = {mRNA[i], mRNA[i + 1], mRNA[i + 2]};
         if (codonTable.find(codon) != codonTable.end()) {
             char aminoAcid = codonTable[codon];
-            if (aminoAcid == '*') break; // STOP → kończ translację
+            if (aminoAcid == '*') break;
             proteinSequence.push_back(aminoAcid);
         } else {
-            throw invalid_argument("Invalid codon found: " + codon);
+            throw invalid_argument("Invalid codon: " + codon);
         }
     }
-}
-void Protein::printVector(const vector<char> &data) {
-    for (char i : data){
-        cout << i;
-    }
+
+    return proteinSequence;
 }
 
-
+void printVector(const vector<char> &data) {
+    for (char c : data) cout << c;
+}

@@ -1,6 +1,10 @@
 /*
  * @author Jan Nowak
  * https://www.w3schools.com/cpp/cpp_vectors.asp
+ * https://www.w3schools.com/cpp/cpp_conditions.asp
+ * https://www.w3schools.com/cpp/cpp_for_loop.asp
+ * https://www.w3schools.com/cpp/cpp_maps.asp
+ *
  */
 
 #include <iostream>

@@ -7,25 +7,24 @@
 
 
 /*
- * Function declaration - it checks inserted parameters
+ * Checks if the given side lengths form a valid triangle.
  *
- * @param a (double) - length of triangle side
- * @param b (double) - length of triangle side
- * @param c (double) - length of triangle side
- * @return bool - parameters are valid or not
+ * @param a (double) - Length of the first side.
+ * @param b (double) - Length of the second side.
+ * @param c (double) - Length of the third side.
+ * @return (bool) - True if the side lengths form a valid triangle, false otherwise.
  */
-
-
 bool check(double a, double b, double c);
 
 
 /*
- * Function declaration - it calculate area of a triangle using Heron's formula
+ * Calculates the area of a triangle using Heron's formula.
  *
- * @param a (int) - length of triangle side
- * @param b (int) - length of triangle side
- * @param c (int) - length of triangle side
- * @return int - area of a triangle
+ * @param a (double) - Length of the first side.
+ * @param b (double) - Length of the second side.
+ * @param c (double) - Length of the third side.
+ * @return (double) - The area of the triangle.
+ * @throws invalid_argument - If the side lengths do not form a valid triangle.
  */
 double heron(double a, double b, double c);
 

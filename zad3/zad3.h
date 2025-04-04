@@ -2,9 +2,9 @@
  * @author Jan Nowak
  */
 
-#include "vector"
+#include <vector>
 #include <stdexcept>
-#include "iostream"
+#include <iostream>
 
 using namespace std;
 
@@ -13,16 +13,19 @@ using namespace std;
 
 
 /*
- * Function returns all possible subsets of given set
- * @param set (Vector<Char>)
- * return Vector<Vector<Char>>
+ * Generates all possible subsets of a given set of characters.
+ *
+ * @param x (const std::vector<char>&) - The input set of characters.
+ * @return (std::vector<std::vector<char>>) - A vector containing all possible subsets.
+ * @throws std::invalid_argument - If the input set is empty.
  */
-vector<vector<char>> podzbiory(const vector<char>& x);
+std::vector<std::vector<char>> podzbiory(const std::vector<char>& x);
 
 /*
- * Function print subsets
- * @param Vector<Vector<Char>>
+ * Prints all the subsets of a given set of characters.
+ *
+ * @param subsets (const std::vector<std::vector<char>>&) - The vector of subsets to print.
  */
-void printSubsets(const vector<vector<char>>& subsets);
+void printSubsets(const std::vector<std::vector<char>>& subsets);
 
 #endif //LISTA_1_ZAD3_H
